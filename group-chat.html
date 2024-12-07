@@ -1,20 +1,114 @@
-<!-- group-chat.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Chat</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Chat</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+    .wrapper {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e6e6e6;
+    }
+    header img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+    }
+    header .details {
+      flex: 1;
+      margin-left: 15px;
+    }
+    header .details span {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    header .details p {
+      font-size: 14px;
+      color: #777;
+    }
+    .chat-box {
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;
+      background: #f9f9f9;
+      margin: 20px 0;
+    }
+    .message {
+      margin-bottom: 10px;
+      padding: 8px;
+      border-radius: 5px;
+    }
+    .message.sender {
+      background: #007bff;
+      color: white;
+      text-align: right;
+    }
+    .message.receiver {
+      background: #f1f1f1;
+      color: black;
+    }
+    form.typing-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    form.typing-area input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    form.typing-area button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form.typing-area button:hover {
+      background: #0056b3;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to the Group Chat</h1>
-    <div id="group-messages"></div> <!-- This is where group messages will appear -->
+  <div class="wrapper">
+    <header>
+      <img src="user-avatar.jpg" alt="Group">
+      <div class="details">
+        <span>Group Name</span>
+        <p>Active Members: 5</p>
+      </div>
+    </header>
+    <div class="chat-box" id="group-messages">
+      <!-- Messages will load here dynamically -->
+    </div>
     <form id="send-message-form">
-        <textarea id="message" placeholder="Type your message here..."></textarea>
-        <button type="submit">Send Message</button>
+      <input type="text" id="message" placeholder="Type your message here..." required>
+      <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
     </form>
-
-    <script src="group-chat.js"></script>
+  </div>
+  <script src="group-chat.js"></script>
 </body>
 </html>
-
