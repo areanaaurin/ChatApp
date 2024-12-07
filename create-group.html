@@ -1,37 +1,75 @@
-<!-- create-group.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Group</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Group</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+    .wrapper {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      color: #333;
+    }
+    form {
+      margin-top: 20px;
+    }
+    label {
+      font-size: 14px;
+      color: #333;
+      display: block;
+      margin-bottom: 5px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
 </head>
 <body>
+  <div class="wrapper">
     <h1>Create a New Group</h1>
     <form action="create-group.php" method="POST">
-        <label for="group_name">Group Name:</label>
-        <input type="text" id="group_name" name="group_name" required>
-        <button type="submit">Create Group</button>
-    </form>
-    <!-- Form to create group -->
-<form id="create-group-form" method="POST">
-    <label for="group-name">Group Name:</label>
-    <input type="text" id="group-name" name="group_name" required>
-    
-    <label for="members">Select Members:</label>
-    <select id="members" name="members[]" multiple required>
+      <label for="group-name">Group Name:</label>
+      <input type="text" id="group-name" name="group_name" placeholder="Enter group name" required>
+      <label for="members">Add Members:</label>
+      <select id="members" name="members[]" multiple required>
         <?php
-        // Fetch users to add to group (you can modify this query as per your needs)
+        // Dynamic user list (example data, ensure $conn is accessible)
         $query = "SELECT user_id, fname FROM users";
         $result = mysqli_query($conn, $query);
         while ($row = mysqli_fetch_assoc($result)) {
-            echo "<option value='".$row['user_id']."'>".$row['fname']."</option>";
+          echo "<option value='{$row['user_id']}'>{$row['fname']}</option>";
         }
         ?>
-    </select>
-    
-    <button type="submit">Create Group</button>
-</form>
-
+      </select>
+      <button type="submit">Create Group</button>
+    </form>
+  </div>
 </body>
 </html>
