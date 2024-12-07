@@ -1,0 +1,12 @@
+<form id="addMembersForm" method="POST">
+    <input type="text" id="userSearch" name="search" placeholder="Search users" required>
+    <button type="submit">Search</button>
+</form>
+
+<div id="userList"></div>
+
+<form id="addMemberToGroupForm" method="POST" style="display: none;">
+    <input type="hidden" id="groupId" name="group_id">
+    <input type="hidden" id="selectedUserId" name="user_id">
+    <button type="submit">Add Member</button>
+</form>
